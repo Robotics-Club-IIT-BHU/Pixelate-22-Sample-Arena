@@ -76,8 +76,8 @@ class PixelateArena(gym.Env):
             [0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 1, 0, 4, 0, 3, 0, 3, 0, 4, 0, 0, 0, 0, 0, 0]]
         )
         self.villain_coords = [[31, (6 , 0)], 
-                               [34, (6 ,12)], 
-                               [33, (24, 6)]]
+                               [33, (6 ,12)], 
+                               [34, (24, 6)]]
 
         self.color_code_urdf = dict({
             2 :  'rsc/hexagon/hexagon_yellow.urdf',
@@ -216,9 +216,9 @@ class PixelateArena(gym.Env):
         def tile_coordinates(x,y):                                  # Input : Index in x,y order
             return  [1.02*(y-6), 0.585*(x-12), -0.08]               # returns co-ordinate of tile in x,y order 
        
-        self.antidote_cords = [[31, (16,6)], 
-                               [33, (10,8)], 
-                               [34, (10,4)]]
+        self.antidote_cords = [[33, (16,6)], 
+                               [34, (10,8)], 
+                               [31, (10,4)]]
 
         for a in self.antidote_cords:
             p.loadURDF(self.color_code_urdf[a[0]],tile_coordinates(*a[1]),useFixedBase = 1)
