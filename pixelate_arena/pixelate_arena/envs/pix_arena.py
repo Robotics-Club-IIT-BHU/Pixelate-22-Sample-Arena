@@ -22,8 +22,8 @@ class PixelateArena(gym.Env):
             self._load_arena()
             self.respawn_car()
 
-        self._width = 720
-        self._height = 720
+        self._width = 600
+        self._height = 600
     
     def reset_arena(self):
         """
@@ -153,10 +153,10 @@ class PixelateArena(gym.Env):
             numpy array of RGB values
         """
         look = [0, 0, 0.2]
-        cameraeyepos = [0, 0, 8]
+        cameraeyepos = [0, 0, 7]
         cameraup = [0, -1, 0]
         self._view_matrix = p.computeViewMatrix(cameraeyepos, look, cameraup)
-        fov = 90
+        fov = 96
         aspect = self._width / self._height
         near = 0.8
         far = 10
@@ -170,7 +170,7 @@ class PixelateArena(gym.Env):
         if is_flat == True:
             # Only for those who are getting a blank image in opencv
             rgb = np.array(rgb)
-            rgb = np.reshape(rgb, (720, 720, 4))
+            rgb = np.reshape(rgb, (600, 600, 4))
         rgb = np.uint8(rgb)
         rgb = cv2.cvtColor(rgb, cv2.COLOR_BGR2RGB)
         rgb = np.rot90(rgb, 3)
